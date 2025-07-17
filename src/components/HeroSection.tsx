@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Star } from "lucide-react";
-import novaBg from "@/assets/fundo-hero.jpg"; // Imagem local
 
 const HeroSection = () => {
   const handleWhatsAppClick = () => {
@@ -21,7 +20,7 @@ const HeroSection = () => {
       {/* Background Image with lighter blur */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat filter blur-[2px] scale-105"
-        style={{ backgroundImage: `url(${novaBg})` }}
+        style={{ backgroundImage: `url('/fundo-hero.jpg')` }}
       >
         <div className="absolute inset-0 bg-black/70 backdrop-blur-[1px]" />
       </div>
