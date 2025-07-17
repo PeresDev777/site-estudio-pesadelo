@@ -19,7 +19,7 @@ const HeroSection = () => {
     <>
       {/* Preload explícito da imagem do hero */}
       <img
-        src="/hero.jpg"
+        src="/fundo-hero.jpg"
         alt="Pré-carregamento do fundo"
         style={{ display: "none" }}
         loading="eager"
@@ -30,7 +30,7 @@ const HeroSection = () => {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat filter blur-[2px] scale-105"
           style={{
-            backgroundImage: `url('/hero.jpg')`,
+            backgroundImage: `url('/fundo-hero.jpg')`,
             backgroundColor: "#0f0f0f", // cor de fundo opcional próxima da imagem
           }}
         >
