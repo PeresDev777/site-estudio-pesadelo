@@ -13,15 +13,15 @@ const Index = () => {
       <Navigation />
       
       <main>
-        <section id="home">
+        <section id="inicio">
           <HeroSection />
         </section>
         
-        <section id="about">
+        <section id="sobre">
           <AboutSection />
         </section>
         
-        <section id="gallery">
+        <section id="galeria">
           <GallerySection />
         </section>
         
@@ -29,11 +29,11 @@ const Index = () => {
           <TestimonialsSection />
         </section>
         
-        <section id="team">
+        <section id="equipe">
           <TeamSection />
         </section>
         
-        <section id="contact">
+        <section id="contato">
           <ContactSection />
         </section>
         

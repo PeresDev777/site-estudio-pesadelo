@@ -8,7 +8,6 @@ const Navigation = () => {
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Controle para animar menu mobile
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -24,14 +23,23 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // Funções para transição suave do menu
   const openMenu = () => {
     setIsMenuOpen(true);
     setIsAnimating(true);
   };
+
   const closeMenu = () => {
     setIsAnimating(false);
-    setTimeout(() => setIsMenuOpen(false), 300); // 300ms = duração da animação
+    setTimeout(() => setIsMenuOpen(false), 300);
+  };
+
+  // Função de scroll suave
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+    closeMenu();
   };
 
   return (
@@ -47,11 +55,11 @@ const Navigation = () => {
         <div className="flex items-center space-x-4">
           <img src={logo} alt="Logo" className="h-14 rounded-xl" />
           <div className="hidden md:flex space-x-6 font-bold text-white">
-            <a href="#inicio">Início</a>
-            <a href="#sobre">Sobre</a>
-            <a href="#galeria">Galeria</a>
-            <a href="#equipe">Equipe</a>
-            <a href="#contato">Contato</a>
+            <button onClick={() => scrollTo("inicio")}>Início</button>
+            <button onClick={() => scrollTo("sobre")}>Sobre</button>
+            <button onClick={() => scrollTo("galeria")}>Galeria</button>
+            <button onClick={() => scrollTo("equipe")}>Equipe</button>
+            <button onClick={() => scrollTo("contato")}>Contato</button>
           </div>
         </div>
 
@@ -75,23 +83,19 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* MENU MOBILE ANIMADO: */}
-      {(isMenuOpen || isAnimating) && (
+      { (isMenuOpen || isAnimating) && (
         <div
-          className={`
-            fixed left-0 right-0 top-16 z-40
-            transition-all duration-300 ease-in-out overflow-hidden
-            ${isMenuOpen && isAnimating ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}
-            md:hidden flex flex-col space-y-4 px-6 py-4 font-semibold text-white
-          `}
+          className={`fixed left-0 right-0 top-16 z-40 transition-all duration-300 ease-in-out overflow-hidden ${
+            isMenuOpen && isAnimating ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          } md:hidden flex flex-col space-y-4 px-6 py-4 font-semibold text-white`}
           style={{ backgroundImage: "var(--gradient-primary)" }}
           onTransitionEnd={() => { if (!isMenuOpen) setIsAnimating(false); }}
         >
-          <a href="#inicio" onClick={closeMenu}>Início</a>
-          <a href="#sobre" onClick={closeMenu}>Sobre</a>
-          <a href="#galeria" onClick={closeMenu}>Galeria</a>
-          <a href="#equipe" onClick={closeMenu}>Equipe</a>
-          <a href="#contato" onClick={closeMenu}>Contato</a>
+          <button onClick={() => scrollTo("inicio")}>Início</button>
+          <button onClick={() => scrollTo("sobre")}>Sobre</button>
+          <button onClick={() => scrollTo("galeria")}>Galeria</button>
+          <button onClick={() => scrollTo("equipe")}>Equipe</button>
+          <button onClick={() => scrollTo("contato")}>Contato</button>
           <a
             href="https://wa.me/5551989671717"
             target="_blank"
